@@ -1,0 +1,32 @@
+<?php 
+class Knight {
+	private $name;
+	private $strenght;
+	private $health;
+	private $alive = TRUE;
+	function __construct($name, $strenght, $health)
+	{
+		$this->name = $name;
+		$this->strenght = $strenght;
+		$this->health = $health;
+	}
+	
+	public function attack($defendingKnight)
+	{
+		$defendingKnight->health -= $this->strenght;
+		
+		if ($defendingKnight->health == 0)
+		{
+			$defendingKnight->alive = false;
+		}
+	}
+	public function isAlive()
+	{
+		if ($this->health <= 0)
+		{
+			$this->alive=false;
+		}
+	}
+}
+
+?>

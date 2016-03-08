@@ -1,0 +1,18 @@
+<html>
+<head>
+</head>
+<body>
+<form action="fight.php">
+	<p>First Knight Name: <input type="text" name="name" /> </p>
+	<p>First Knight Strength: <input type="text" name="strenght" /></p>
+	<p>First Knight Health: <input type="text" name="health" /></p>
+	<p>Second Knight Name: <input type="text" name="name" /> </p>
+	<p>Second Knight Strength: <input type="text" name="strenght" /></p>
+	<p>Second Knight Health: <input type="text" name="health" /></p>
+	<p>Third Knight Name: <input type="text" name="name" /> </p>
+	<p>Third Knight Strength: <input type="text" name="strenght" /></p>
+	<p>Third Knight Health: <input type="text" name="health" /></p>
+	<input type="submit"/> 
+</form>
+</body>
+</html>

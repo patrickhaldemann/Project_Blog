@@ -4,6 +4,7 @@ require_once 'model/UserModel.php';
 
 class UserController
 {
+	//Funktion um die Werte eines Users Anzuzeigen
     public function index()
     {
         $userModel = new UserModel();
@@ -14,7 +15,8 @@ class UserController
         $view->users = $userModel->readAll();
         $view->display();
     }
-
+	
+    //Werte für View zum User erstellen
     public function create()
     {
         $view = new View('user_create');
@@ -23,6 +25,7 @@ class UserController
         $view->display();
     }
 
+    //Funktion zum erstellen des Users
     public function doCreate()
     {
         if ($_POST['send']) {

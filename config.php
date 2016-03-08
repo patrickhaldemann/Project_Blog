@@ -4,9 +4,9 @@ return array(
 
     'database' => array(
         'host' => 'localhost',
-        'username' => 'root',
-        'password' => '',
-        'database' => 'mvc',
+        'username' => 'BlogUser',
+        'password' => 'Projectblog$1234',
+        'database' => 'project_blog',
     ),
 
 );

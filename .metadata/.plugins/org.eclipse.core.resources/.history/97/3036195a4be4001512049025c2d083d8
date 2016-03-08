@@ -1,0 +1,13 @@
+<?php 
+class Knight {
+	public $name;
+	public $strenght;
+	function __construct($name, $strenght)
+	{
+		$this->name = $name;
+		$this->strenght = $strenght;
+	}
+	
+}
+
+?>

@@ -1,0 +1,16 @@
+<?php
+echo '<form action="index.php?action=fight" method="post">
+<p>First Knight Name: <input type="text" name="name_1" /> </p>
+<p>First Knight Strength: <input type="text" name="strenght_1" /></p>
+<p>First Knight Health: <input type="text" name="health_1" /></p>
+<br>
+<p>Second Knight Name: <input type="text" name="name_2" /> </p>
+<p>Second Knight Strength: <input type="text" name="strenght_2" /></p>
+<p>Second Knight Health: <input type="text" name="health_2" /></p>
+<br>
+<p>Third Knight Name: <input type="text" name="name_3" /> </p>
+<p>Third Knight Strength: <input type="text" name="strenght_3" /></p>
+<p>Third Knight Health: <input type="text" name="health_3" /></p>
+<input type="submit"/>
+</form>';
+?>

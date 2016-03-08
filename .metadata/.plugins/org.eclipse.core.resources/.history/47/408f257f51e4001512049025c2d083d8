@@ -1,0 +1,11 @@
+<html>
+<head>
+</head>
+<body>
+<form action="fight.php">
+	<p>Knight Name: <input type="text" name="name" /> </p>
+	<p>Knight Strength: <input type="text" name="strenght" /></p>
+	<input type="submit"/> 
+</form>
+</body>
+</html>

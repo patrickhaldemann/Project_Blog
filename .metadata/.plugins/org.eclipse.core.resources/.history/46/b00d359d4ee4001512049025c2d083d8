@@ -1,0 +1,34 @@
+<?php
+class Knight {
+	private $name;
+	private $strenght;
+	private $health;
+	private $alive = TRUE;
+	
+	function __construct($name, $strenght,) {
+		$this->name = $name;
+		$this->strenght = $strenght;
+	}
+	
+	public function attack($defendingKnight) {
+		$defendingKnight->health -= $this->strenght;
+		
+		if ($defendingKnight->health <= 0) {
+			$defendingKnight->alive = false;
+		}
+	}
+	
+	public function isAlive() {
+		return $this->alive;
+	}
+	
+	public function __toString() {
+		return 
+		"<span>His Name is: ". $this->name .
+		"<br>His Strengh is: ". $this->strenght .
+		"<br>His Health is: ". $this->health . 
+		"<br>Is the Knight alive: " . $this->alive . "<br>";
+	}
+}
+
+?>
