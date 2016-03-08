@@ -21,4 +21,33 @@ class UserModel extends Model
             throw new Exception($statement->error);
         }
     }
+    
+    public function login($email, $password)
+    {
+    	$password = sha1($password);
+    
+    	$query = "SELECT * FROM $this->tableName WHERE email = ? AND password = ?";
+    
+    	$statement = ConnectionHandler::getConnection()->prepare($query);
+    	$statement->bind_param('ss', $email, $password);
+    	
+    	// Das Statement absetzen
+    	$statement->execute();
+    	
+    	// Resultat der Abfrage holen
+    	$result = $statement->get_result();
+    	if (!$result) {
+    		throw new Exception($statement->error);
+    	}
+    	
+    	// Ersten Datensatz aus dem Reultat holen
+    	$row = $result->fetch_object();
+    	
+    	// Datenbankressourcen wieder freigeben
+    	$result->close();
+    	
+    	// Den gefundenen Datensatz zurückgeben
+    	return $row;
+    	
+    }
 }

@@ -36,24 +36,24 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class=""><a href="/">Home <span class="sr-only">(current)</span></a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Blogs <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">All Blogs</a></li>
-							<li><a href="#">Categories:</a></li>
-							<ul>
-								<li><a href="#">Patch-Notes</a></li>
-								<li><a href="#">Champions</a></li>
-								<li><a href="#">ESport</a></li>
-							</ul>
-						</ul></li>
-						<li><a href="/user">My Account</a></li>
-						<li><a href="#">About</a></li>
+					<li><a href="#">All Blogs</a></li>
+					<?php
+					var_dump($_SESSION);
+						if (isset($_SESSION['id'])) {
+							echo'<li><a href="#">My Account</a></li>';
+						}
+						?>
+					<li><a href="#">About</a></li>				
 				</ul>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-            <li><a href="/user/create">Sign Up</a></li>
+			<?php
+			if (isset($_SESSION['id']))
+				echo '<li><a href="/user/signout">Sign Out</a></li>';
+			else
+				echo'<li><a href="/user/create">Sign Up</a></li>';
+				echo'<li><a href="/user/login">Login</a></li>';
+			?>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->

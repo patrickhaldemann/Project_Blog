@@ -5,7 +5,7 @@ return array(
     'database' => array(
         'host' => 'localhost',
         'username' => 'BlogUser',
-        'password' => 'Projectblog$1234',
+        'password' => 'gibbiX12345',
         'database' => 'project_blog',
     ),
 
