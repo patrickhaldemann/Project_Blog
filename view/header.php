@@ -11,7 +11,7 @@
 	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
 	crossorigin="anonymous">
 <!-- Einbindung eigenes CSS -->
-<link href="view/css/style.css" rel="stylesheet">
+<link href="/view/css/style.css" rel="stylesheet">
 <!-- Einbindung JQuery -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
