@@ -1,10 +1,11 @@
+
 <article class="hreview open special">
-	<?php if (empty($users)): ?>
+	<?php if (empty($users)) { ?>
 		<div class="dhd">
 		<h2 class="item title">Oh shit something went horribly wrong</h2>
 	</div>
-	<?php else: ?>
-		<?php foreach ($users as $user): ?>
+	<?php } else { ?>
+		<?php foreach ($users as $user) { ?>
 			<div class="panel panel-default">
 		<div class="panel-heading"><?= $user->FirstName;?> <?= $user->LastName;?></div>
 		<div class="panel-body">
@@ -17,11 +18,10 @@
 					echo '<p><a title="Delete user" href="/user/delete?id=' . $user->id . '">Delete user</a></p>';
 				}
 			}
-			
 			?>
-					
 				</div>
 	</div>
-		<?php endforeach ?>
-	<?php
-endif;</article>
+		<?php } ?>
+	
+	<?php } ?>
+</article>

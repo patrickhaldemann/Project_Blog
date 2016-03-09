@@ -21,6 +21,7 @@
 
 </head>
 <body>
+<img alt="Header_Bild" src="/view/Pictures/Header_Lol.png">
 	<!-- Header-Navigationsbar mit Haupt und unter Menüpunkten -->
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -32,7 +33,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand">LoL</a>
+				<a class="navbar-brand">League of Legends Blog</a>
 			</div>
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
@@ -45,15 +46,26 @@
 					}
 					?>
 					<li><a href="#">About</a></li>
+					<?php
+					if(isset ( $_SESSION ['IsAdmin'] ))
+					{
+						if ($_SESSION['IsAdmin'] == 1)
+						{
+							echo '<li><a href="/blog/create">Create Blog</a></li>';
+						}
+					}
+					?>
 				</ul>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 			<?php
-			if (isset ( $_SESSION ['id'] ))
+			if (isset ( $_SESSION ['id'] )){
 				echo '<li><a href="/user/signout">Sign Out</a></li>';
-			else
+			}
+			else{
 				echo '<li><a href="/user/create">Sign Up</a></li>';
-			echo '<li><a href="/user/login">Login</a></li>';
+				echo '<li><a href="/user/login">Login</a></li>';
+			}
 			?>
 				</ul>
 			</div>
