@@ -1,13 +1,13 @@
 <?php 
-require_once 'lib/Model.php';
+require_once 'model/BlogModel.php';
 class DefaultController{
 	public function index()
 	{
-		$model = new Model();
+		$blogModel = new BlogModel();
 		$view = new View('default_index');
 		$view->title = 'Homepage';
 		$view->heading = '';
-		$view->blogs = $model->readAll ();
+		$view->blogs = $blogModel->readLastBlogs();
 		$view->display();
 	}
 }

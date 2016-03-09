@@ -18,4 +18,22 @@ class BlogModel extends Model {
 			throw new Exception($statement->error);
 		}
 	}
+	
+	public function readLastBlogs(){
+
+			$query = "SELECT * FROM $this->tableName ORDER BY id DESC LIMIT 2";
+		
+			$statement = ConnectionHandler::getConnection()->prepare($query);
+			$statement->execute();
+		
+			$result = $statement->get_result();
+			if (!$result) {
+				throw new Exception($statement->error);
+			}
+			$rows = array();
+			while ($row = $result->fetch_object()) {
+				$rows[] = $row;
+			}
+			return $rows;
+	}
 }
