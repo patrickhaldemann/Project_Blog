@@ -38,8 +38,17 @@ class UserController {
 		if ($_POST ['send']) {
 			$firstName = $_POST ['firstName'];
 			$lastName = $_POST ['lastName'];
-			$email = $_POST ['email'];
 			$password = $_POST ['password'];
+			
+			if (isset($_POST['email']) && !empty($_POST['email'])) {
+				$email = $_POST['email'];
+				if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+					echo 'The Email you entered is not a valid Email!';
+				}
+				else {
+					echo 'Email not set';
+				}
+			}
 			
 			$userModel = new UserModel ();
 			$userModel->create ( $firstName, $lastName, $email, $password );

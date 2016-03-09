@@ -32,3 +32,28 @@
 		</div>
 	</div>
 </form>
+<script type="text/javascript">
+	// Pattern zur überprüfung der Email
+	var emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+	$(document).ready(function () {
+		$('form').submit(function (event) {
+			if ($('.validation-error').length > 0) {
+				event.preventDefault();
+				alert("The email address you entered is not a valid email address!")
+			}
+		});
+		$('#email').change(function () {
+			$(this).removeClass('validation-success');
+			$(this).removeClass('validation-error');
+
+			// Überprüfen ob Eingabe mit Pattern übereinstimmt
+			if ($(this).val().match(emailPattern)) {
+				$(this).addClass('validation-success');
+			}
+			else {
+				$(this).addClass('validation-error');
+			}
+		});
+	});
+</script>
