@@ -39,7 +39,7 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class=""><a href="/">Home <span class="sr-only">(current)</span></a></li>
-					<li><a href="#">All Blogs</a></li>
+					<li><a href="/blog/allBlogs">All Blogs</a></li>
 					<?php
 					if (isset ( $_SESSION ['id'] )) {
 						echo '<li><a href="#">My Account</a></li>';
@@ -52,10 +52,10 @@
 						if ($_SESSION['IsAdmin'] == 1)
 						{
 							echo '<li><a href="/blog/create">Create Blog</a></li>';
+							echo '<li><a href="/user">Users</a></li>';
 						}
 					}
 					?>
-				</ul>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 			<?php

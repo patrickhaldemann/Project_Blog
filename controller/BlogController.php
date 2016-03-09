@@ -1,7 +1,17 @@
 <?php
 require_once 'model/BlogModel.php';
+require_once 'lib/Model.php';
 class BlogController{
-	
+
+	public function allBlogs()
+	{
+		$model = new BlogModel();
+		$view = new View('blog_index');
+		$view->title = 'All Blogs';
+		$view->heading = 'All Blogs';
+		$view->blogs = $model->readAll();
+		$view->display();
+	}
 	//Werte für Blog Create View
 	public function create() {
 		$view = new View ( 'blog_create' );

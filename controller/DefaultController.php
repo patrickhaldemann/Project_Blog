@@ -6,7 +6,7 @@ class DefaultController{
 		$blogModel = new BlogModel();
 		$view = new View('default_index');
 		$view->title = 'Homepage';
-		$view->heading = '';
+		$view->heading = 'Latest Blogs';
 		$view->blogs = $blogModel->readLastBlogs();
 		$view->display();
 	}
