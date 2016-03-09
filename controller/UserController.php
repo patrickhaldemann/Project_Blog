@@ -29,6 +29,8 @@ class UserController {
 	}
 	public function signout() {
 		session_destroy();
+		// Anfrage an die URI /user weiterleiten (HTTP 302)
+		header ( 'Location: /' );
 	}
 	
 	// Funktion zum erstellen des Users
@@ -44,7 +46,7 @@ class UserController {
 		}
 		
 		// Anfrage an die URI /user weiterleiten (HTTP 302)
-		header ( 'Location: /user' );
+		header ( 'Location: /' );
 	}
 	
 	// Benutzer Login
@@ -55,14 +57,18 @@ class UserController {
 			
 			$userModel = new UserModel ();
 			$User = $userModel->login ( $email, $password );
-			var_dump($User);
 			if (isset($User->id)) {
 				$_SESSION['id'] = $User->id;
 			}
+			if(isset($User->IsAdmin))
+			{
+				$_SESSION['IsAdmin'] = $User->IsAdmin;
+			}
+			header ( 'Location: /user' );
 		}
 		
 		// Anfrage an die URI /user weiterleiten (HTTP 302)
-		//header ( 'Location: /user' );
+		header ( 'Location: /' );
 	}
 	public function delete() {
 		$userModel = new UserModel ();

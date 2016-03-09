@@ -12,7 +12,7 @@ class UserModel extends Model
     {
         $password = sha1($password);
 
-        $query = "INSERT INTO $this->tableName (firstName, lastName, email, password) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO $this->tableName (FirstName, LastName, Email, Password) VALUES (?, ?, ?, ?)";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
         $statement->bind_param('ssss', $firstName, $lastName, $email, $password);

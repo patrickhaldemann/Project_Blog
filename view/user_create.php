@@ -3,25 +3,25 @@
 		<div class="form-group">
 		  <label class="col-md-2 control-label" for="firstName">Vorname</label>
 		  <div class="col-md-4">
-		  	<input id="firstName" name="firstName" type="text" placeholder="Vorname" class="form-control input-md">
+		  	<input id="firstName" name="firstName" type="text" required="required" placeholder="Vorname" class="form-control input-md">
 		  </div>
 		</div>
 		<div class="form-group">
 		  <label class="col-md-2 control-label" for="lastName">Nachname</label>
 		  <div class="col-md-4">
-		  	<input id="lastName" name="lastName" type="text" placeholder="Nachname" class="form-control input-md">
+		  	<input id="lastName" name="lastName" type="text" required="required" placeholder="Nachname" class="form-control input-md">
 		  </div>
 		</div>
 		<div class="form-group">
 		  <label class="col-md-2 control-label" for="email">Mail</label>
 		  <div class="col-md-4">
-		  	<input id="email" name="email" type="text" placeholder="Mail" class="form-control input-md">
+		  	<input id="email" name="email" type="text" required="required" placeholder="Mail" class="form-control input-md">
 		  </div>
 		</div>
 		<div class="form-group">
 		  <label class="col-md-2 control-label" for="password">Password</label>
 		  <div class="col-md-4">
-		  	<input id="password" name="password" type="password" placeholder="Passwort" class="form-control input-md">
+		  	<input id="password" name="password" type="password" required="required" placeholder="Passwort" class="form-control input-md">
 		  </div>
 		</div>
 		<div class="form-group">
