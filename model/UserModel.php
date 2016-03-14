@@ -40,7 +40,7 @@ class UserModel extends Model {
 		// Den gefundenen Datensatz zurückgeben
 		return $row;
 	}
-	public function changePassword($OldPassword, $NewPassword, $id) {
+	public function changePassword($OldPassword, $NewPassword) {
 		$OldPassword = sha1 ( $OldPassword );
 		$NewPassword = sha1 ( $NewPassword );
 		$works = false;
@@ -76,5 +76,28 @@ class UserModel extends Model {
 			$works = true;
 		}
 		return $works;
+	}
+	public function checkPassword($password, $email) {
+		$password = sha1($password);
+		
+		$query = "SELECT * FROM user WHERE Password = ? AND Email = ?";
+		
+		$statement = ConnectionHandler::getConnection()->prepare($query);
+		$statement->bind_param('ss', $password, $email);
+		
+		// Das Statement absetzen
+		$statement->execute ();
+		
+		// Resultat der Abfrage holen
+		$result = $statement->get_result ();
+		if (!$result) {
+			echo '<script>alert("Wong username or password!")</script>';
+		}
+		
+		// Ersten Datensatz aus dem Resultat holen
+		$row = $result->fetch_object();
+		
+		// Datenbankressourcen wieder freigeben
+		$result->close ();
 	}
 }
