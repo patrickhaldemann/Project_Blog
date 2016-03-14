@@ -5,7 +5,7 @@ class ImpressumController {
 		$impressumModel = new ImpressumModel();
 		$view = new View ( 'impressum' );
 		$view->title = 'About';
-		$view->heading = 'About';
+		$view->heading = '';
 		$view->display ();
 	}
 	

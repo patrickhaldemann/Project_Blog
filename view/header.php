@@ -22,7 +22,10 @@
 
 </head>
 <body>
-<img alt="Header_Bild" src="/view/Pictures/Header_Lol.png">
+<!-- <img alt="Header_Bild" src="/view/Pictures/Header_Lol.png"> --> 
+<div id="logo-container">
+<img src="/view/Pictures/Header_Lol.png" alt="Header_Bild" />
+</div>
 	<!-- Header-Navigationsbar mit Haupt und unter Menüpunkten -->
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">

@@ -9,8 +9,8 @@
 		<div class="form-group">
 		  <label class="col-md-2 control-label" for="BlogContent">Blog Text</label>
 		  <div class="col-md-4">
-		  	<textarea id="BlogContent" name="BlogContent" type="text" required="required" class="form-control input-md"></textarea>
-		  	<p>Max. 1000 Characters.</p>
+		  	<textarea id="BlogContent" name="BlogContent" required="required" class="form-control input-md"></textarea>
+		  	<p style="color: white;">Max. 1000 Characters.</p>
 		  </div>
 		</div>
 		<div class="form-group">

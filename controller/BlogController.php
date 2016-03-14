@@ -33,4 +33,12 @@ class BlogController{
 		// Anfrage an die URI /user weiterleiten (HTTP 302)
 		header ( 'Location: /' );
 	}
+	
+	public function delete() {
+		$blogModel = new BlogModel();
+		$blogModel->deleteById ( $_GET ['id'] );
+	
+		// Anfrage an die URI / weiterleiten (HTTP 302)
+		header ( 'Location: /' );
+	}
 }
