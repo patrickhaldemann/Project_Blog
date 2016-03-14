@@ -3,6 +3,7 @@ require_once 'lib/Model.php';
 class BlogModel extends Model {
 	protected $tableName = 'blog';
 	
+	//Funktion zum erstellen eines Blog Beitrags
 	public function create($BlogTitle, $BlogContent){
 		$userId = $_SESSION['id'];
 		$currentDate = date("Y/m/d");
@@ -19,6 +20,7 @@ class BlogModel extends Model {
 		}
 	}
 	
+	//Funktion um letzte 2 Blogs zu erhalten
 	public function readLastBlogs(){
 
 			$query = "SELECT * FROM $this->tableName ORDER BY id DESC LIMIT 2";

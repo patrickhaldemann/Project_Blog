@@ -1,6 +1,7 @@
 <?php 
 require_once 'model/BlogModel.php';
 class DefaultController{
+	//Werte für die Startseite
 	public function index()
 	{
 		$blogModel = new BlogModel();

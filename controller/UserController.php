@@ -20,6 +20,7 @@ class UserController {
 		$view->display ();
 	}
 	
+	//Werte für MyAccount View
 	public function myAccount($samePwd = false) {
 		$userModel = new UserModel ();
 		$view = new View ( 'user_account' );
@@ -99,6 +100,7 @@ class UserController {
 		}
 	}
 	
+	//Funktion zum Updaten des Passwords
 	public function passwordUpdate() {
 		if ($_POST ['send']) {
 			$NewPassword = $_POST ['NewPassword'];
@@ -118,6 +120,7 @@ class UserController {
 	}
 	
 	
+	//Funktion zum Löschen eines Users
 	public function delete() {
 		$userModel = new UserModel ();
 		$userModel->deleteById ( $_GET ['id'] );

@@ -3,6 +3,7 @@ require_once 'model/BlogModel.php';
 require_once 'lib/Model.php';
 class BlogController{
 
+	//Werte für View für alle Blogs
 	public function allBlogs()
 	{
 		$model = new BlogModel();
@@ -12,6 +13,7 @@ class BlogController{
 		$view->blogs = $model->readAll();
 		$view->display();
 	}
+	
 	//Werte für Blog Create View
 	public function create() {
 		$view = new View ( 'blog_create' );
@@ -34,6 +36,7 @@ class BlogController{
 		header ( 'Location: /' );
 	}
 	
+	//Funktion zum Löschen eines Blogs
 	public function delete() {
 		$blogModel = new BlogModel();
 		$blogModel->deleteById ( $_GET ['id'] );

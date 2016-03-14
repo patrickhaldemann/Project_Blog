@@ -4,6 +4,8 @@ require_once 'ConnectionHandler.php';
 class Model
 {
     protected $tableName = null;
+    
+    //Standart-Funktion um nur ganz Bestimmten Datensatz zu laden
     public function readById($id)
     {
         $query = "SELECT * FROM $this->tableName WHERE id=?";
@@ -18,6 +20,8 @@ class Model
         $result->close();
         return $row;
     }
+    
+    //Standart-Funktion um bestimmte Datensätze zu lesen
     public function readAll($max = 100)
     {
         $query = "SELECT * FROM $this->tableName ORDER BY id DESC LIMIT 0, $max";
@@ -36,6 +40,8 @@ class Model
 
         return $rows;
     }
+    
+    //Standart-Funktion die zum Löschen verwendet wird
     public function deleteById($id)
     {
         $query = "DELETE FROM $this->tableName WHERE id=?";
