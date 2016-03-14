@@ -1,4 +1,10 @@
 <form class="form-horizontal" action="/user/doLogin" method="post">
+	
+	<?php 
+	if (!$validData) {
+		echo'<span style="color: red;">Username or Password is wrong!</span>';
+	}
+	?>
 	<div class="component" data-html="true">
 		<div class="form-group">
 			<label class="col-md-2 control-label" for="email">Mail</label>

@@ -33,10 +33,11 @@ class UserController {
 	}
 	
 	// Werte für View zum User Login
-	public function login() {
+	public function login($validData = true) {
 		$view = new View ( 'user_login' );
 		$view->title = 'Login';
 		$view->heading = 'Login';
+		$view->validData = $validData;
 		$view->display ();
 	}
 	public function signout() {
@@ -78,17 +79,22 @@ class UserController {
 			
 			$userModel = new UserModel ();
 			$User = $userModel->login ( $email, $password );
-			if (isset($User->id)) {
-				$_SESSION['id'] = $User->id;
-			}
-			if(isset($User->IsAdmin))
+			
+			if ($User)
 			{
-				$_SESSION['IsAdmin'] = $User->IsAdmin;
-				header ( 'Location: /user' );
+				if (isset ( $User->id )) {
+					$_SESSION ['id'] = $User->id;
+				}
+				if (isset ( $User->IsAdmin )) {
+					$_SESSION ['IsAdmin'] = $User->IsAdmin;
+					header ( 'Location: /user' );
+				} else {
+					// Anfrage an die URI / weiterleiten (HTTP 302)
+					header ( 'Location: /' );
+				}
 			}
-			else{
-				// Anfrage an die URI / weiterleiten (HTTP 302)
-				header ( 'Location: /' );
+			else {
+				$this->login(false);
 			}
 		}
 	}

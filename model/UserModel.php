@@ -79,6 +79,7 @@ class UserModel extends Model {
 	}
 	public function checkPassword($password, $email) {
 		$password = sha1($password);
+		$works = false;
 		
 		$query = "SELECT * FROM user WHERE Password = ? AND Email = ?";
 		
@@ -91,7 +92,10 @@ class UserModel extends Model {
 		// Resultat der Abfrage holen
 		$result = $statement->get_result ();
 		if (!$result) {
-			echo '<script>alert("Wong username or password!")</script>';
+			throw new Exception ( $statement->error );
+		}
+		else {
+			$works = true;
 		}
 		
 		// Ersten Datensatz aus dem Resultat holen
@@ -99,5 +103,6 @@ class UserModel extends Model {
 		
 		// Datenbankressourcen wieder freigeben
 		$result->close ();
+		return $works;
 	}
 }
