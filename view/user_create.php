@@ -1,13 +1,13 @@
 <form class="form-horizontal" action="/user/doCreate" method="post">
 	<div class="component" data-html="true">
 		<div class="form-group">
-		  <label class="col-md-2 control-label" for="firstName">Vorname</label>
+		  <label class="col-md-2 control-label" for="firstName">Firstname</label>
 		  <div class="col-md-4">
 		  	<input id="firstName" name="firstName" type="text" required="required" placeholder="Vorname" class="form-control input-md">
 		  </div>
 		</div>
 		<div class="form-group">
-		  <label class="col-md-2 control-label" for="lastName">Nachname</label>
+		  <label class="col-md-2 control-label" for="lastName">Lastname</label>
 		  <div class="col-md-4">
 		  	<input id="lastName" name="lastName" type="text" required="required" placeholder="Nachname" class="form-control input-md">
 		  </div>
@@ -27,7 +27,7 @@
 		<div class="form-group">
 	      <label class="col-md-2 control-label" for="send">&nbsp;</label>
 		  <div class="col-md-4">
-		    <input id="send" name="send" type="submit" class="btn btn-primary">
+		    <input id="send" name="send" type="submit" value="Send" class="btn btn-primary">
 		  </div>
 		</div>
 	</div>

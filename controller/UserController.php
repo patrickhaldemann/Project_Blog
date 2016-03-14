@@ -6,8 +6,8 @@ class UserController {
 		$userModel = new UserModel ();
 		
 		$view = new View ( 'user_index' );
-		$view->title = 'Benutzer';
-		$view->heading = 'Benutzer';
+		$view->title = 'Users';
+		$view->heading = 'Users';
 		$view->users = $userModel->readAll ();
 		$view->display ();
 	}
@@ -15,8 +15,17 @@ class UserController {
 	// Werte für View zum User erstellen
 	public function create() {
 		$view = new View ( 'user_create' );
-		$view->title = 'Benutzer erstellen';
-		$view->heading = 'Benutzer erstellen';
+		$view->title = 'Create User';
+		$view->heading = 'Create User';
+		$view->display ();
+	}
+	
+	public function myAccount() {
+		$userModel = new UserModel ();
+		$view = new View ( 'user_account' );
+		$view->title = 'My Account';
+		$view->heading = 'My Account';
+		$view->User = $userModel->readById($_SESSION['id']);
 		$view->display ();
 	}
 	
@@ -72,18 +81,25 @@ class UserController {
 			if(isset($User->IsAdmin))
 			{
 				$_SESSION['IsAdmin'] = $User->IsAdmin;
+				header ( 'Location: /user' );
 			}
-			header ( 'Location: /user' );
+			else{
+				// Anfrage an die URI / weiterleiten (HTTP 302)
+				header ( 'Location: /' );
+			}
 		}
-		
-		// Anfrage an die URI / weiterleiten (HTTP 302)
-		header ( 'Location: /' );
 	}
 	
-	public function getUser() {
-		$userModel = new UserModel();
-		$OneUser = $userModel->getUserById($_SESSION['id']);
+	public function passwordUpdate() {
+		if ($_POST ['send']) {
+			$NewPassword = $_POST ['NewPassword'];
+			$OldPassword = $_POST ['OldPassword'];	
+			$userModel = new UserModel ();
+			$User = $userModel->changePassword($OldPassword, $NewPassword, $_SESSION['id'] );
+			header ( 'Location: /user/myAccount' );
+		}
 	}
+	
 	
 	public function delete() {
 		$userModel = new UserModel ();

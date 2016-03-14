@@ -43,7 +43,7 @@
 					<li><a href="/blog/allBlogs">All Blogs</a></li>
 					<?php
 					if (isset ( $_SESSION ['id'] )) {
-						echo '<li><a href="#">My Account</a></li>';
+						echo '<li><a href="/user/myAccount">My Account</a></li>';
 					}
 					?>
 					<li><a href="/impressum/about">About</a></li>
