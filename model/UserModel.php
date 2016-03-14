@@ -2,6 +2,8 @@
 require_once 'lib/Model.php';
 class UserModel extends Model {
 	protected $tableName = 'user';
+	
+	//Funktion zum erstellen eines Users
 	public function create($firstName, $lastName, $email, $password) {
 		$password = sha1 ( $password );
 		
@@ -14,6 +16,8 @@ class UserModel extends Model {
 			throw new Exception ( $statement->error );
 		}
 	}
+	
+	//Funktion für das Login
 	public function login($email, $password) {
 		$password = sha1 ( $password );
 		
@@ -40,6 +44,8 @@ class UserModel extends Model {
 		// Den gefundenen Datensatz zurÃ¼ckgeben
 		return $row;
 	}
+	
+	//Funktion  die benötigt wird um das Passwort zu ändern
 	public function changePassword($OldPassword, $NewPassword) {
 		$OldPassword = sha1 ( $OldPassword );
 		$NewPassword = sha1 ( $NewPassword );
@@ -77,6 +83,8 @@ class UserModel extends Model {
 		}
 		return $works;
 	}
+	
+	//Funktion die Login Daten Prüft
 	public function checkPassword($password, $email) {
 		$password = sha1($password);
 		$works = false;
