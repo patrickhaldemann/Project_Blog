@@ -43,6 +43,7 @@ class UserModel extends Model {
 	public function changePassword($OldPassword, $NewPassword, $id) {
 		$OldPassword = sha1 ( $OldPassword );
 		$NewPassword = sha1 ( $NewPassword );
+		$works = false;
 		
 		$queryCheck = "SELECT * FROM user WHERE Password = ?";
 		
@@ -72,6 +73,8 @@ class UserModel extends Model {
 			if (! $statement->execute ()) {
 				throw new Exception ( $statement->error );
 			}
+			$works = true;
 		}
+		return $works;
 	}
 }

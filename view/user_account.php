@@ -34,7 +34,12 @@
 		if (isset ( $_POST ['ChangePassword'] )) {
 			
 			echo '<form action="/user/passwordUpdate" method="post">
-			<div class="form-group">
+			<input type="hidden" name="ChangePassword" value="ChangePassword" />';
+			
+			if ($samePwd)
+				echo '<script>alert("Wrong Old Password!")</script>';
+			
+			echo '<div class="form-group">
 					<label class="col-md-2 control-label" for="OldPassword">Old Password</label>
 		  				<div class="col-md-4">
 							<input type="password" name="OldPassword" class="form-control input-md" required="required">

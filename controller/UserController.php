@@ -20,12 +20,15 @@ class UserController {
 		$view->display ();
 	}
 	
-	public function myAccount() {
+	public function myAccount($samePwd = false) {
 		$userModel = new UserModel ();
 		$view = new View ( 'user_account' );
 		$view->title = 'My Account';
 		$view->heading = 'My Account';
 		$view->User = $userModel->readById($_SESSION['id']);
+		
+		$view->samePwd = $samePwd;
+		
 		$view->display ();
 	}
 	
@@ -95,8 +98,16 @@ class UserController {
 			$NewPassword = $_POST ['NewPassword'];
 			$OldPassword = $_POST ['OldPassword'];	
 			$userModel = new UserModel ();
-			$User = $userModel->changePassword($OldPassword, $NewPassword, $_SESSION['id'] );
-			header ( 'Location: /user/myAccount' );
+			$Updated = $userModel->changePassword($OldPassword, $NewPassword, $_SESSION['id'] );
+			
+			
+			if ($Updated)
+			{
+				header ( 'Location: /user/myAccount' );
+			}
+			else {
+				$this->myAccount(true);
+			}
 		}
 	}
 	
