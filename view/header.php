@@ -45,7 +45,7 @@
 						echo '<li><a href="#">My Account</a></li>';
 					}
 					?>
-					<li><a href="#">About</a></li>
+					<li><a href="/impressum/about">About</a></li>
 					<?php
 					if(isset ( $_SESSION ['IsAdmin'] ))
 					{
