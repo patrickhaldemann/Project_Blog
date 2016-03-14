@@ -54,7 +54,7 @@ class UserController {
 			$userModel->create ( $firstName, $lastName, $email, $password );
 		}
 		
-		// Anfrage an die URI /user weiterleiten (HTTP 302)
+		// Anfrage an die URI / weiterleiten (HTTP 302)
 		header ( 'Location: /' );
 	}
 	
@@ -76,14 +76,20 @@ class UserController {
 			header ( 'Location: /user' );
 		}
 		
-		// Anfrage an die URI /user weiterleiten (HTTP 302)
+		// Anfrage an die URI / weiterleiten (HTTP 302)
 		header ( 'Location: /' );
 	}
+	
+	public function getUser() {
+		$userModel = new UserModel();
+		$OneUser = $userModel->getUserById($_SESSION['id']);
+	}
+	
 	public function delete() {
 		$userModel = new UserModel ();
 		$userModel->deleteById ( $_GET ['id'] );
 		
-		// Anfrage an die URI /user weiterleiten (HTTP 302)
+		// Anfrage an die URI / weiterleiten (HTTP 302)
 		header ( 'Location: /user' );
 	}
 }

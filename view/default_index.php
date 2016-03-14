@@ -3,7 +3,7 @@
 	if (empty ( $blogs )) {
 		?>
 		<div class="dhd">
-		<h2 class="item title">Oh shit something went horribly wrong</h2>
+		<h2 class="item title">There are currently no Blogs available</h2>
 	</div>
 	<?php } else { ?>
 		<?php foreach ($blogs as $blog) { ?>
