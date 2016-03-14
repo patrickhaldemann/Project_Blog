@@ -14,3 +14,28 @@
    width: 100%;
    height: auto;
 }
+
+body{
+  background: url("../Pictures/Kluft_der_Beschwoerer.png") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+
+footer p{
+	color: lightgrey;
+}
+
+body h1{
+	color: white;
+}
+
+label {
+		color: white;
+}
+
+#about .fattymcfatfat{
+	font-size: 36px !important;
+}
