@@ -9,3 +9,8 @@
 .smallfont {
 	font-size: 12px !important;
 }
+
+#logo-container img {
+   width: 100%;
+   height: auto;
+}
