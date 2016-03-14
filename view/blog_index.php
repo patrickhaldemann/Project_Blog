@@ -16,7 +16,7 @@
 								<?php
 			if (isset ( $_SESSION ['IsAdmin'] )) {
 				if ($_SESSION ['IsAdmin'] == 1) {
-					echo '<p style="margin-left: 15px;"><a href="/blog/delete?id=' . $blog->id . '" onclick="return confirm(\'Are you sure?\')">Delete user</a></p>';
+					echo '<p style="margin-left: 15px;"><a href="/blog/delete?id=' . $blog->id . '" onclick="return confirm(\'Are you sure?\')">Delete Blog</a></p>';
 				}
 			}
 			?>
