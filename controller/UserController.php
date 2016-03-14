@@ -88,7 +88,7 @@ class UserController {
 				}
 				if (isset ( $User->IsAdmin )) {
 					$_SESSION ['IsAdmin'] = $User->IsAdmin;
-					header ( 'Location: /user' );
+					header ( 'Location: /' );
 				} else {
 					// Anfrage an die URI / weiterleiten (HTTP 302)
 					header ( 'Location: /' );
