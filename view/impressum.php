@@ -18,8 +18,7 @@
 				<div class="caption">
 					<h3>Patrick Haldemann</h3>
 					<p>
-						Telefon: +41 79 951 02 44 <br>E-mail:
-						patrick.haldemann@iet-gibb.ch
+						E-mail: patrick.haldemann@iet-gibb.ch
 					</p>
 				</div>
 			</div>
@@ -30,7 +29,7 @@
 				<div class="caption">
 					<h3>Max Steiger</h3>
 					<p>
-						Telefon: +41 78 874 40 44 <br>E-mail: max.steiger@iet-gibb.ch
+						E-mail: max.steiger@iet-gibb.ch
 					</p>
 				</div>
 			</div>

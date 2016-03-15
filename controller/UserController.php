@@ -13,20 +13,21 @@ class UserController {
 	}
 	
 	// Werte für View zum User erstellen
-	public function create() {
+	public function create($validData = true) {
 		$view = new View ( 'user_create' );
 		$view->title = 'Create User';
 		$view->heading = 'Create User';
+		$view->validData = $validData;
 		$view->display ();
 	}
 	
-	//Werte für MyAccount View
+	// Werte für MyAccount View
 	public function myAccount($samePwd = false) {
 		$userModel = new UserModel ();
 		$view = new View ( 'user_account' );
 		$view->title = 'My Account';
 		$view->heading = 'My Account';
-		$view->User = $userModel->readById($_SESSION['id']);
+		$view->User = $userModel->readById ( $_SESSION ['id'] );
 		
 		$view->samePwd = $samePwd;
 		
@@ -42,7 +43,7 @@ class UserController {
 		$view->display ();
 	}
 	public function signout() {
-		session_destroy();
+		session_destroy ();
 		// Anfrage an die URI /user weiterleiten (HTTP 302)
 		header ( 'Location: /' );
 	}
@@ -54,22 +55,25 @@ class UserController {
 			$lastName = $_POST ['lastName'];
 			$password = $_POST ['password'];
 			
-			if (isset($_POST['email']) && !empty($_POST['email'])) {
-				$email = $_POST['email'];
-				if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-					echo 'The Email you entered is not a valid Email!';
+			if (isset ( $_POST ['email'] ) && ! empty ( $_POST ['email'] )) {
+				$email = $_POST ['email'];
+				if (! filter_var ( $email, FILTER_VALIDATE_EMAIL )) {
+					echo'The Email you entered is not a valid Email!';
 				}
+				
 				else {
-					echo 'Email not set';
+					echo'Email not set!';
 				}
 			}
-			
 			$userModel = new UserModel ();
-			$userModel->create ( $firstName, $lastName, $email, $password );
+			$row = $userModel->create ( $firstName, $lastName, $email, $password );
+			if ($row) {
+				// Anfrage an die URI / weiterleiten (HTTP 302)
+				header ( 'Location: /' );
+			} else {
+				$this->create ( false );
+			}
 		}
-		
-		// Anfrage an die URI / weiterleiten (HTTP 302)
-		header ( 'Location: /' );
 	}
 	
 	// Benutzer Login
@@ -81,8 +85,7 @@ class UserController {
 			$userModel = new UserModel ();
 			$User = $userModel->login ( $email, $password );
 			
-			if ($User)
-			{
+			if ($User) {
 				if (isset ( $User->id )) {
 					$_SESSION ['id'] = $User->id;
 				}
@@ -93,34 +96,29 @@ class UserController {
 					// Anfrage an die URI / weiterleiten (HTTP 302)
 					header ( 'Location: /' );
 				}
-			}
-			else {
-				$this->login(false);
+			} else {
+				$this->login ( false );
 			}
 		}
 	}
 	
-	//Funktion zum Updaten des Passwords
+	// Funktion zum Updaten des Passwords
 	public function passwordUpdate() {
 		if ($_POST ['send']) {
 			$NewPassword = $_POST ['NewPassword'];
-			$OldPassword = $_POST ['OldPassword'];	
+			$OldPassword = $_POST ['OldPassword'];
 			$userModel = new UserModel ();
-			$Updated = $userModel->changePassword($OldPassword, $NewPassword, $_SESSION['id'] );
+			$Updated = $userModel->changePassword ( $OldPassword, $NewPassword, $_SESSION ['id'] );
 			
-			
-			if ($Updated)
-			{
+			if ($Updated) {
 				header ( 'Location: /user/myAccount' );
-			}
-			else {
-				$this->myAccount(true);
+			} else {
+				$this->myAccount ( true );
 			}
 		}
 	}
 	
-	
-	//Funktion zum Löschen eines Users
+	// Funktion zum Löschen eines Users
 	public function delete() {
 		$userModel = new UserModel ();
 		$userModel->deleteById ( $_GET ['id'] );

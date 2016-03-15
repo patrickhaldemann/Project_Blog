@@ -1,4 +1,9 @@
 <form class="form-horizontal" action="/user/doCreate" method="post">
+	<?php 
+	if (!$validData) {
+		echo'<script>alert("A User with this E-mail address already exists!")</script>';
+	}
+	?>
 	<div class="component" data-html="true">
 		<div class="form-group">
 		  <label class="col-md-2 control-label" for="firstName">Firstname</label>

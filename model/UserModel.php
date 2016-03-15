@@ -7,14 +7,40 @@ class UserModel extends Model {
 	public function create($firstName, $lastName, $email, $password) {
 		$password = sha1 ( $password );
 		
-		$query = "INSERT INTO $this->tableName (FirstName, LastName, Email, Password) VALUES (?, ?, ?, ?)";
+		$query1 = "SELECT count(*) as counter FROM $this->tableName WHERE email = ?";
 		
-		$statement = ConnectionHandler::getConnection ()->prepare ( $query );
-		$statement->bind_param ( 'ssss', $firstName, $lastName, $email, $password );
+		$statement = ConnectionHandler::getConnection ()->prepare ( $query1 );
+		$statement->bind_param ( 's', $email);
 		
-		if (! $statement->execute ()) {
+		// Das Statement absetzen
+		$statement->execute ();
+		
+		// Resultat der Abfrage holen
+		$result = $statement->get_result ();
+		if (! $result) {
 			throw new Exception ( $statement->error );
 		}
+		
+		// Ersten Datensatz aus dem Reultat holen
+		$row = $result->fetch_object ();
+		
+		// Datenbankressourcen wieder freigeben
+		$result->close ();
+		
+		if($row->counter<1) {
+			$query = "INSERT INTO $this->tableName (FirstName, LastName, Email, Password) VALUES (?, ?, ?, ?)";
+			
+			$statement = ConnectionHandler::getConnection ()->prepare ( $query );
+			$statement->bind_param ( 'ssss', $firstName, $lastName, $email, $password );
+			
+			if (! $statement->execute ()) {
+				throw new Exception ( $statement->error );
+			}
+		}
+		else {
+			return false;
+		}
+		return true;
 	}
 	
 	//Funktion für das Login
