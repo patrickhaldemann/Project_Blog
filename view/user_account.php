@@ -40,13 +40,13 @@
 				echo '<script>alert("Wrong Old Password!")</script>';
 			
 			echo '<div class="form-group">
-					<label class="col-md-2 control-label" for="OldPassword">Old Password</label>
+					<label class="col-md-2 control-label changePwLbl" for="OldPassword">Old Password</label>
 		  				<div class="col-md-4">
 							<input type="password" name="OldPassword" class="form-control input-md" required="required">
 						</div>
 				</div>';
 			echo '<div class="form-group">
-					<label class="col-md-2 control-label" for="NewPassword">New Password</label>
+					<label class="col-md-2 control-label changePwLbl" for="NewPassword">New Password</label>
 		  				<div class="col-md-4">
 							<input type="password" name="NewPassword" class="form-control input-md" required="required">
 						</div>
